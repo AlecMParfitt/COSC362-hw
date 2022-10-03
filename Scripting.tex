@@ -1,12 +1,13 @@
 \documentclass[12pt]{article}
 \usepackage{amsmath}
-\usepackage{listings}
 \begin{document}
 \begin{enumerate}
-\item Script 1 : pdflatex_cleanup.sh
+\item Script 1 : pdflatex\verb"_"cleanup.sh
 \begin{verbatim}
-    # if no argument is specified removes .aux and .log files from the current directory
-    # if document name is provided, removes only .aux and .log files for that document
+    # if no argument is specified removes .aux and .log files from the 
+    # current directory
+    # if document name is provided, removes only .aux and .log files 
+    # for that document
     #
     # usage: pdflatex_cleanup.sh [document_name]
     #
@@ -20,12 +21,14 @@
 \end{verbatim}
 \item Script 2 : userlog.sh
 \begin{verbatim}
-    # prints the bash history of specified user to a file [username]-[date].log in the current directory
+    # prints the bash history of specified user to a file 
+    # [username]-[date].log in the current directory
     # also prints the last login of that user to [username]-login.log
     #
     # Assumes that home directories are in /home/[username]
     #
-    # requires root privileges if you want to run it on another user's account
+    # requires root privileges if you want to run it on another user's 
+    # account
     #
     # usage: sudo userlog.sh [username]
     #
@@ -51,6 +54,20 @@
     last -a "$1" | head -n 1 > ./$1-login.log
 \end{verbatim}
 \item Scripts 3 and 4 : animation.sh and adventure.sh
+
+
+\verb"https://youtu.be/zU6PQEYDpXM"
+
+In the video, I actually demo all scripts created for this assignment. If you can't make it out,
+you may have to manually increase the quality. It should be available in 1080p.
+
+
+The animation script will bouce supplied text around the screen, or just an 'O' if nothing is given to it.
+
+
+The adventure script is a simple text adventure game, not everything is perfect but it work well enough.
+I will include the .sh files for all of these in the homework submission if possible, if not I will make
+public github repo temporarily for the assignment.
 \end{enumerate}
 
 

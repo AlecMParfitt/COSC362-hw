@@ -297,7 +297,7 @@ You are victorious, but you are still late to class."
             esac
         done
     elif [ $location == "11" ]; then
-     select option in "Go back to the Lobby" "Dry shoes with the air dryer"; do
+     select option in "Go back to the Lobby" "Dry shoes with the air dryer" "Quit"; do
             case $option in 
                 "Go back to the Lobby")
                     if $power; then
