@@ -89,7 +89,12 @@ while true; do
                     break
                     ;;
                 "Get homework from car")
-                    homework=true
+                    if $homework; then
+                        echo "You already have your homework."
+                    else
+                        echo "You get your homework from your car."
+                        homework=true
+                    fi
                     break
                     ;;
                 "Quit")
@@ -248,11 +253,15 @@ on the tile. At least vampires can't get me now.' You have slipped down the stai
             case $option in 
                 "Go to classroom")
                     # check if user has garlic gum
-                    if $garlicgum; then
-                        echo "You enter the classroom. The garlic chewing gum taken from the receptionist's desk is effective against the vampire. 
-You are victorious, but you are still late to class."
+                    if $garlicgum && $homework; then
+                        echo "==================================================================================="
+                        echo "You enter the classroom. The professor is a vampire but when he smells the garlic gum, he runs out of the room."
+                        echo "You place your homework on the professor's desk and leave the classroom. You survived and got an A!"
                         echo ""
                         echo "You win!"
+                    elif $garlicgum; then
+                        echo "You enter the classroom. The garlic chewing gum taken from the receptionist's desk is effective against the vampire. 
+You have survived, but you failed the class because you didn't turn in your homework."
                         exit
                     else
                         echo "You enter the classroom. Immediately, a .bat file opens and spawns a vampire. You are dead."
