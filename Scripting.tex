@@ -1,0 +1,58 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{listings}
+\begin{document}
+\begin{enumerate}
+\item Script 1 : pdflatex_cleanup.sh
+\begin{verbatim}
+    # if no argument is specified removes .aux and .log files from the current directory
+    # if document name is provided, removes only .aux and .log files for that document
+    #
+    # usage: pdflatex_cleanup.sh [document_name]
+    #
+    # @author: Alec Parfitt
+    
+    if [ $# -eq 0 ]; then
+        rm -f *.aux *.log
+    else
+        rm -f $1.aux $1.log
+    fi
+\end{verbatim}
+\item Script 2 : userlog.sh
+\begin{verbatim}
+    # prints the bash history of specified user to a file [username]-[date].log in the current directory
+    # also prints the last login of that user to [username]-login.log
+    #
+    # Assumes that home directories are in /home/[username]
+    #
+    # requires root privileges if you want to run it on another user's account
+    #
+    # usage: sudo userlog.sh [username]
+    #
+    # @author: Alec Parfitt
+
+    # check for argument
+    if [ $# -eq 0 ]; then
+        echo "No argument supplied"
+        echo "Usage: userlog.sh username"
+        exit 1
+    fi
+
+    # check if user exists
+    if ! id -u "$1" >/dev/null 2>&1; then
+        echo "User does not exist"
+        exit 1
+    fi
+
+    # read user bash history from home/user/.bash_history
+    cat /home/"$1"/.bash_history > ./$1-"$(date)".txt
+
+    # get last login date and time and append it to the log
+    last -a "$1" | head -n 1 > ./$1-login.log
+\end{verbatim}
+\item Scripts 3 and 4 : animation.sh and adventure.sh
+\end{enumerate}
+
+
+
+\end{document}
